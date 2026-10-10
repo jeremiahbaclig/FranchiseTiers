@@ -84,7 +84,17 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  margin-bottom: 0.5rem;
+  margin: 0 auto 0.5rem;
+  background: none;
+  border: none;
+  padding: 0.25rem 0.75rem;
+  cursor: pointer;
+  border-radius: 999px;
+  transition: background 0.15s ease;
+}
+
+.tournament-view__header:hover {
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .tournament-view__logo {
@@ -104,7 +114,7 @@ body {
 .tournament-view__toolbar {
   display: flex;
   gap: 0.5rem;
-  justify-content: flex-end;
+  justify-content: center;
   margin-bottom: 1rem;
 }
 
@@ -346,6 +356,7 @@ body {
 .records-panel {
   flex: 0 0 260px;
   max-width: 280px;
+  width: 100%;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 14px;
@@ -519,13 +530,56 @@ body {
 }
 
 @media (max-width: 600px) {
-  .matchup-screen__pair {
-    flex-direction: column;
+  .tournament-view__layout {
+    flex-direction: column-reverse;
     align-items: center;
+    gap: 1rem;
+  }
+
+  .records-panel {
+    box-sizing: border-box;
+    flex: 0 0 auto;
+    /* matches the combined width of the two side-by-side matchup cards, capped at their own max size */
+    width: 100%;
+    max-width: calc(2 * 320px + 0.5rem);
+    padding: 0.5rem 0.65rem;
+  }
+
+  .records-panel__title {
+    font-size: 0.85rem;
+    padding: 0.15rem 0;
+  }
+
+  .records-panel__list {
+    margin-top: 0.35rem;
+    gap: 0.2rem;
+    max-height: 280px;
+  }
+
+  .records-panel__row {
+    padding: 0.25rem 0.4rem;
+    font-size: 0.7rem;
+  }
+
+  .records-panel__icon {
+    font-size: 0.8rem;
+  }
+
+  .matchup-screen__pair {
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+  }
+
+  .matchup-card {
+    width: min(46vw, 320px);
+    padding: 0.6rem;
+  }
+
+  .matchup-card__hint {
+    display: none;
   }
 
   .matchup-screen__pair::after {
-    top: 50%;
-    left: 50%;
+    font-size: 1.1rem;
   }
 }

@@ -56,13 +56,17 @@ function TournamentView({ franchiseId, onExit }: { franchiseId: string; onExit: 
 
   return (
     <div className="tournament-view">
-      <div className="tournament-view__header">
+      <button
+        type="button"
+        className="tournament-view__header"
+        onClick={onExit}
+        title="Change franchise"
+      >
         {franchise.logoUrl && <img src={franchise.logoUrl} alt="" className="tournament-view__logo" />}
         <h2>{franchise.displayName}</h2>
-      </div>
+      </button>
 
       <div className="tournament-view__toolbar">
-        <button onClick={onExit}>Change franchise</button>
         <button onClick={undoLast} disabled={!canUndo}>
           Undo
         </button>
